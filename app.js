@@ -3,7 +3,9 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
-
+app.get("/", (req, res) => {
+  res.send("Server is up and running!");
+});
 app.get("/bfhl", (req, res) => {
   res.json({
     operation_code: 1
