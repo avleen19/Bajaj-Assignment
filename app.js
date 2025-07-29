@@ -3,9 +3,11 @@ const app = express();
 const PORT = 3000;
 
 app.use(express.json());
+
 app.get("/", (req, res) => {
   res.send("Server is up and running!");
 });
+
 app.get("/bfhl", (req, res) => {
   res.json({
     operation_code: 1
@@ -37,23 +39,27 @@ app.post("/bfhl", (req, res) => {
     }
   });
 
+  const reversed = alphabets.join('').split('').reverse();
+  const formatted = reversed
+    .map((ch, i) => (i % 2 === 0 ? ch.toUpperCase() : ch.toLowerCase()))
+    .join('');
+
   const response = {
     is_success: true,
-    user_id: "avleen_210009",
-    email: "avleen@example.com",
-    roll_number: "210009",
+    user_id: "avleen_19122004",
+    email: "avleen203.be22@chitkara.edu.in",
+    roll_number: "2210990203",
     odd_numbers: odd,
     even_numbers: even,
     alphabets: alphabets,
     special_characters: specialChars,
     sum: sum.toString(),
-    concat_string: (alphabets[0] ?? "") + (alphabets[1] ?? "")
+    concat_string: formatted
   };
 
   res.json(response);
 });
 
-app.listen(3000, () => {
-  console.log("Server running on port 3000");
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
-
