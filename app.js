@@ -51,6 +51,7 @@ app.post("/bfhl", (req, res) => {
   res.json(response);
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+app.listen(3000, () => {
+  console.log("Server running on port 3000");
 });
+
